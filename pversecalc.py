@@ -37,16 +37,22 @@ def calculate():
     use_rare = checkbox_var4.get()
     
     # Perform calculation based on checkbox states
-    result = 0
+    result_hp = 0
+    result_atk = 0
+    result_Def = 0
+    result_SpAtk = 0
+    result_SpDef = 0
+    result_Speed = 0
+    
     if use_male:
-        result = (hp + hpiv + hpev) * 1.1 * (level * 0.04)
+        result_hp = (hp + hpiv + hpev) * 1.1 * (level * 0.04)
         result_atk = (atk + atkiv + atkev) * 1.1 * ((level * 2/5) + 2)
         result_def = (Def + Defiv + Defev) * 1.1 * ((level * 2/5) + 2)
         result_SpAtk = (SpAtk + SpAtkIv + SpAtkEv) * 1.1 * ((level * 2/5) + 2)
         result_SpDef = (Spdef + SpDefiv + SpDefev) * 1.1 * ((level * 2/5) + 2)
         result_Speed = (Speed + SpeedIV + SpeedEV) * 1.1 * ((level * 2/5) + 2)
     if use_male and use_shiny:
-        result = (hp + hpiv + hpev) * (1.1 * 1.1) * (level * 0.04)
+        result_hp = (hp + hpiv + hpev) * (1.1 * 1.1) * (level * 0.04)
         result_atk = (atk + atkiv + atkev) * (1.1*1.1) * ((level * 2/5) + 2)
         result_def = (Def + Defiv + Defev) * (1.1*1.1) * ((level * 2/5) + 2)
         result_SpAtk = (SpAtk + SpAtkIv + SpAtkEv) * (1.1*1.1) * ((level * 2/5) + 2)
@@ -68,40 +74,47 @@ def calculate():
         result_Speed = (Speed + SpeedIV + SpeedEV) * (1.1 * 1.1 * 1.3) * ((level * 2/5) + 2)
 
     if use_rare:
-        result = (hp + (hpiv*1.5) + hpev) * (level * 0.04)
+        result_hp = (hp + (hpiv*1.5) + hpev) * (level * 0.04)
         result_atk = (atk + (atkiv * 1.5) + atkev) * ((level * 2/5) + 2)
         result_def = (Def + (Defiv * 1.5) + Defev)* ((level * 2/5) + 2)
         result_SpAtk = (SpAtk + (SpAtkIv * 1.5) + SpAtkEv) * ((level * 2/5) + 2)
         result_SpDef = (Spdef + (SpDefiv * 1.5) + SpDefev) * ((level * 2/5) + 2)
         result_Speed = (Speed + (SpeedIV * 1.5) + SpeedEV) * ((level * 2/5) + 2)
     if use_rare and use_male or use_shiny:
-        result = (hp + (hpiv*1.5) + hpev) * 1.1 * (level * 0.04)
+        result_hp = (hp + (hpiv*1.5) + hpev) * 1.1 * (level * 0.04)
         result_atk = (atk + (atkiv * 1.5) + atkev) * 1.1 *((level * 2/5) + 2)
         result_def = (Def + (Defiv * 1.5) + Defev) * 1.1 * ((level * 2/5) + 2)
         result_SpAtk = (SpAtk + (SpAtkIv * 1.5) + SpAtkEv) * 1.1 * ((level * 2/5) + 2)
         result_SpDef = (Spdef + (SpDefiv * 1.5) + SpDefev) * 1.1 * ((level * 2/5) + 2)
         result_Speed = (Speed + (SpeedIV * 1.5) + SpeedEV) * 1.1 * ((level * 2/5) + 2)
     if use_rare and use_male and use_shiny:
-        result = (hp + (hpiv*1.5) + hpev) * (1.1*1.1) * (level * 0.04)
+        result_hp = (hp + (hpiv*1.5) + hpev) * (1.1*1.1) * (level * 0.04)
         result_atk = (atk + (atkiv * 1.5) + atkev) * (1.1*1.1) *((level * 2/5) + 2)
         result_def = (Def + (Defiv * 1.5) + Defev) * (1.1*1.1) * ((level * 2/5) + 2)
         result_SpAtk = (SpAtk + (SpAtkIv * 1.5) + SpAtkEv) * (1.1*1.1) * ((level * 2/5) + 2)
         result_SpDef = (Spdef + (SpDefiv * 1.5) + SpDefev) * (1.1*1.1) * ((level * 2/5) + 2)
         result_Speed = (Speed + (SpeedIV * 1.5) + SpeedEV) * (1.1*1.1) * ((level * 2/5) + 2)
     if use_rare and use_male and use_shiny and use_mutated:
-        result = (hp + (hpiv*1.5) + hpev) * (1.1*1.1*1.3) * (level * 0.04)
+        result_hp = (hp + (hpiv*1.5) + hpev) * (1.1*1.1*1.3) * (level * 0.04)
         result_atk = (atk + (atkiv * 1.5) + atkev) * (1.1*1.1*1.3) *((level * 2/5) + 2)
         result_def = (Def + (Defiv * 1.5) + Defev) * (1.1*1.1*1.3) * ((level * 2/5) + 2)
         result_SpAtk = (SpAtk + (SpAtkIv * 1.5) + SpAtkEv) * (1.1*1.1*1.3) * ((level * 2/5) + 2)
         result_SpDef = (Spdef + (SpDefiv * 1.5) + SpDefev) * (1.1*1.1*1.3) * ((level * 2/5) + 2)
         result_Speed = (Speed + (SpeedIV * 1.5) + SpeedEV) * (1.1*1.1*1.3) * ((level * 2/5) + 2)
     elif not use_male and not use_shiny and not use_mutated and not use_rare:
-        resulthp_label.config(text="Hp: " + str(round(result_hp)))
-        resultatk_label.config(text="Attack: " + str(round(result_atk)))
-        resultdef_label.config(text="Defense: " + str(round(result_def)))
-        resultSpAtk_label.config(text="Special Attack: " + str(round(result_SpAtk)))
-        resultSpDef_label.config(text="Special Defense: " + str(round(result_SpDef)))
-        resultSpeed_label.config(text="Speed: " + str(round(result_Speed)))
+        result_hp = (hp + hpiv + hpev) * ((level * 2/5) + 2)
+        result_atk = (atk + atkiv + atkev) * ((level * 2/5) + 2)
+        result_def = (Def + Defiv + Defev) * ((level * 2/5) + 2)
+        result_SpAtk = (SpAtk + SpAtkIv + SpAtkEv) * ((level * 2/5) + 2)
+        result_SpDef = (Spdef + SpDefiv + SpDefev) * ((level * 2/5) + 2)
+        result_Speed = (Speed + SpeedIV + SpeedEV) * ((level * 2/5) + 2)
+
+    resulthp_label.config(text="Hp: " + str(result_hp))
+    resultatk_label.config(text="Attack: " + str(result_atk))
+    resultDef_label.config(text="Defense: " + str(result_def))
+    resultSpAtk_label.config(text="Special Attack: " + str(result_SpAtk))
+    resultSpDef_label.config(text="Special Defense: " + str(result_SpDef))
+    resultSpeed_label.config(text="Speed: " + str(result_Speed))
 
 # Create the main window
 window = tk.Tk()
